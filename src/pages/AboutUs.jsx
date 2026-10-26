@@ -1,8 +1,3 @@
-import CardSwap from "../components/CardSwap";
-import cardimages from "../images/Screenshot 2026-10-26 132947.png";
-import cardimages1 from "../images/Screenshot 2026-10-26 122151.png";
-import cardimages2 from "../images/Screenshot 2026-10-26 152516.png";
-import cardimages3 from "../images/Screenshot 2026-10-26 153830.png";
 
 function AboutUs() {
   const items = [

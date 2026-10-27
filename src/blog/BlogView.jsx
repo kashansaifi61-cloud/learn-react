@@ -1,5 +1,6 @@
-import { Link, useParams } from "react-router-dom";
-import { blogs } from "./Blog";
+
+import { useParams, Link } from "react-router-dom";
+import { blogs } from "./blogData";
 import "./Blog.css";
 
 function BlogView() {
@@ -11,25 +12,38 @@ function BlogView() {
 
   if (!blog) {
     return (
-      <section className="page container">
+      <div className="blog-container">
         <h1>Blog Not Found</h1>
-        <Link to="/blog">Back to Blog</Link>
-      </section>
+        <Link to="/blog">Back to Blogs</Link>
+      </div>
     );
   }
 
   return (
-    <article className="page container">
-      <h1>{blog.title}</h1>
+    <article className="blog-view">
+      <div className="blog-container">
+        <Link to="/blog" className="back-to-blog">
+          &larr; Back to Blogs
+        </Link>
 
-      <p>{blog.description}</p>
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="blog-view-image"
+        />
 
-      <p>
-        This is the individual blog detail page.
-        Add your complete article content here.
-      </p>
+        <h1>{blog.title}</h1>
 
-      <Link to="/blog">Back to Blog</Link>
+        <p className="blog-view-subtitle">
+          {blog.subtitle}
+        </p>
+
+        <p>{blog.description}</p>
+
+        <div className="blog-content">
+          {blog.content}
+        </div>
+      </div>
     </article>
   );
 }

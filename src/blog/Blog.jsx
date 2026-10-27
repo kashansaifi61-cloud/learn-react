@@ -1,45 +1,48 @@
-import { Link } from "react-router-dom";
+
+import ChromaGrid from "./ChromaGrid";
+import { blogs } from "./blogData";
 import "./Blog.css";
 
-const blogs = [
-  {
-    id: 1,
-    title: "Introduction to React",
-    description: "Learn the basics of React development.",
-  },
-  {
-    id: 2,
-    title: "Understanding JavaScript",
-    description: "Explore important JavaScript concepts.",
-  },
-  {
-    id: 3,
-    title: "Web Development Tips",
-    description: "Discover useful tips for web developers.",
-  },
-];
-
 function Blog() {
+  const items = blogs.map((blog) => ({
+    image: blog.image,
+    title: blog.title,
+    subtitle: blog.subtitle,
+    accent: blog.accent,
+    url: `/blog/${blog.id}`,
+  }));
+
   return (
-    <section className="page container">
-      <h1>Our Blog</h1>
+    <section className="blog-section">
+      <div className="blog-container">
+        <h1 className="blog-heading">Our Blog</h1>
 
-      <div className="blog-list">
-        {blogs.map((blog) => (
-          <article className="blog-card" key={blog.id}>
-            <h2>{blog.title}</h2>
+        <p className="blog-description">
+          Explore our latest articles and stories.
+        </p>
 
-            <p>{blog.description}</p>
-
-            <Link to={`/blog/${blog.id}`}>
-              Read More
-            </Link>
-          </article>
-        ))}
+        <ChromaGrid
+          items={items}
+          columns={2}
+          minCardWidth={180}
+          gap={12}
+          radius={260}
+          reveal="spotlight"
+          aspectRatio="3 / 2"
+          cardRadius={22}
+          showInfo
+          frame={false}
+          softness={0.6}
+          damping={0.45}
+          fadeOut={0.6}
+          grayscale={1}
+          dim={0.12}
+          glow={0.5}
+          borderGlow={1}
+        />
       </div>
     </section>
   );
 }
 
-export { blogs };
 export default Blog;
